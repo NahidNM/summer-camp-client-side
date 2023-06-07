@@ -1,10 +1,13 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
+// import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+// import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  const { createUser, updateUserProfile } = useAuth()
-  const navigate = useNavigate();
+  const { createUser, updateUserProfile, setReload } = useAuth()
+//   const navigate = useNavigate();
   
   const onSubmit = data => {
 
@@ -15,33 +18,37 @@ const SignUp = () => {
             console.log(loggedUser);
 
             updateUserProfile(data.name, data.photoURL)
-                .then(() => {
-                    const saveUser = { name: data.name, email: data.email }
-                    fetch('https://bistro-boss-server-fawn.vercel.app/users', {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json'
-                        },
-                        body: JSON.stringify(saveUser)
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.insertedId) {
-                                reset();
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'User created successfully.',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                                navigate('/');
-                            }
-                        })
+            .then(()=>{
+                setReload(Date.now())
+            })
+            
+                // .then(() => {
+                    // const saveUser = { name: data.name, email: data.email }
+                    // fetch('https://bistro-boss-server-fawn.vercel.app/users', {
+                    //     method: 'POST',
+                    //     headers: {
+                    //         'content-type': 'application/json'
+                    //     },
+                    //     body: JSON.stringify(saveUser)
+                    // })
+                        // .then(res => res.json())
+                        // .then(data => {
+                        //     if (data.insertedId) {
+                        //         reset();
+                        //         Swal.fire({
+                        //             position: 'top-end',
+                        //             icon: 'success',
+                        //             title: 'User created successfully.',
+                        //             showConfirmButton: false,
+                        //             timer: 1500
+                        //         });
+                        //         navigate('/');
+                        //     }
+                        // })
 
 
 
-                })
+                // })
                 .catch(error => console.log(error))
         })
 };
@@ -100,7 +107,7 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p><small>Already have an account <Link to="/login">Login</Link></small></p>
-                        <SocialLogin></SocialLogin>
+                        {/* <SocialLogin></SocialLogin> */}
                     </div>
                 </div>
             </div>  

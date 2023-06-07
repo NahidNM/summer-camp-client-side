@@ -11,6 +11,7 @@ const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [reload, setReload] =useState(0);
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -36,7 +37,8 @@ const AuthProvider = ({children}) => {
 
     const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
-            displayName: name, photoURL: photo
+            displayName: name, 
+            photoURL: photo
         });
     }
 
@@ -53,7 +55,7 @@ const AuthProvider = ({children}) => {
         return () => {
             return unsubscribe();
         }
-    }, [])
+    }, [reload])
 
     const authInfo = {
         user,
@@ -62,7 +64,8 @@ const AuthProvider = ({children}) => {
         signIn,
         googleSignIn,
         logOut,
-        updateUserProfile
+        updateUserProfile,
+        setReload
     }
 
     return (
