@@ -1,6 +1,10 @@
-
+import { useForm } from "react-hook-form";
+import useAuth from "../../Hooks/useAuth";
 
 const SignUp = () => {
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { createUser, updateUserProfile } = useAuth()
+  const navigate = useNavigate();
   
     return (
         <div>
