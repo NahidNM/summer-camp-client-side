@@ -53,7 +53,7 @@ const Login = () => {
     return (
         <div>
             <Helmet>
-        <title>Sumner Sports camp | Classes</title>
+        <title>Sumner Sports camp | Login</title>
       </Helmet>
             <div className='grid w-full pt-20 mb-10 md:grid-cols-2'>
             <div data-aos="fade-right" className='m-5'>

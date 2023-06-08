@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 // import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 // import Swal from "sweetalert2";
 
 const SignUp = () => {
@@ -55,6 +56,9 @@ const SignUp = () => {
   
     return (
         <div>
+            <Helmet>
+        <title>Sumner Sports camp | SignUp</title>
+      </Helmet>
         <div className="min-h-screen hero bg-base-200">
                 <div className="flex-col hero-content lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
