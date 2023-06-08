@@ -1,12 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import gif from '../../../public/Login/World Bicycle Day.gif'
-import { FaGithub, FaGoogle } from 'react-icons/fa'; 
+import { FaGoogle } from 'react-icons/fa'; 
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     
@@ -33,6 +33,19 @@ const Login = () => {
                 });
                 navigate(from, { replace: true });
             })
+    }
+    
+    // Google LogIn
+    const handleGoogleSignIn = () =>{
+        googleSignIn()
+        .then(result => {
+            const googleUser = result.user;
+            navigate(from, {replace: true})
+            console.log(googleUser)
+        })
+        .catch(error =>{
+            console.log(error)
+        })
     }
     
     
@@ -86,10 +99,10 @@ const Login = () => {
                 <div>
                     <h1 className='mb-4 text-2xl font-semibold text-center mt-7'>Login With</h1>
                     
-                    <div className='items-center gap-4 mt-2 md:flex'>
+                    <div className='gap-4 mt-2 '>
                         
-                    <button   className='flex items-center gap-2 px-3 py-1 my-2 text-xl font-semibold text-blue-700 bg-white border rounded-lg border-zincflex'><FaGoogle  /> Loing With Google</button>                  
-                    <button   className='flex items-center gap-2 px-3 py-1 text-xl font-semibold bg-white border rounded-lg text-sky-600 border-zincflex'><FaGithub/> Loing With github</button>
+                    <button onClick={handleGoogleSignIn}  className='flex items-center gap-2 px-3 py-1 mx-auto my-2 text-xl font-semibold text-blue-700 bg-white border rounded-lg border-zincflex'><FaGoogle  /> Loing With Google</button>                  
+                  
                 </div>
          </div>
             </div>
