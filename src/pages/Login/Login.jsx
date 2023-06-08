@@ -4,6 +4,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext);
@@ -50,32 +51,23 @@ const Login = () => {
     
     
     return (
-        <div className='grid w-full pt-20 mb-10 md:grid-cols-2'>
+        <div>
+            <Helmet>
+        <title>Sumner Sports camp | Classes</title>
+      </Helmet>
+            <div className='grid w-full pt-20 mb-10 md:grid-cols-2'>
             <div data-aos="fade-right" className='m-5'>
                 <img className='' src={gif} alt="" />
             </div>
             
          <div data-aos="fade-left" className='h-full px-10 pt-5 mx-auto border-2 border-indigo-600 border-solid rounded-lg bg-slate-400'>
          <h1 className='mb-5 text-4xl font-semibold text-center'>Please Login</h1>
-            {/* <form>
-                <h1 className='text-xl font-semibold'>Email :</h1>
-                
-                <input className='w-full px-5 py-2 my-3 border rounded-lg border-stone-500'name='email' type="email" placeholder='Enter Email' required/> <br />
-                
-                <h1 className='text-xl font-semibold'>Password :</h1>
-                
-                <input className='w-full px-5 py-2 my-3 border rounded-lg border-stone-500'name='password' type="password" placeholder='Enter password' required/>
-                
-              <div>
-              <button className='w-full px-5 py-2 my-3 text-xl font-semibold bg-orange-400 border rounded-lg border-stone-500'>Login</button>
-              </div>
-            </form> */}
             <form onSubmit={handleLogin}  className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="text-xl font-semibold label-text">Email</span>
                                 </label>
-                                <input type="email" name="email" placeholder="email" className="input input-bordered" />
+                                <input type="email" name="email" placeholder="email" className=" input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -107,6 +99,7 @@ const Login = () => {
          </div>
             </div>
        
+        </div>
         </div>
     );
 };

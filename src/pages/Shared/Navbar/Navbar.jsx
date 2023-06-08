@@ -23,6 +23,9 @@ const Navbar = () => {
 <NavLink to='/' className={({isActive})=>(isActive? 'font-medium tracking-wide text-amber-200 transition-colors duration-200 border px-2 rounded-md border-zinc-400 shadow-2xl bg-cyan-700': 'hover:text-green-500 font-medium')}>Inistuctores</NavLink>
 </li>
 <li>
+<NavLink to='/class' className={({isActive})=>(isActive? 'font-medium tracking-wide text-amber-200 transition-colors duration-200 border px-2 rounded-md border-zinc-400 shadow-2xl bg-cyan-700': 'hover:text-green-500 font-medium')}>Classes</NavLink>
+</li>
+<li>
 {
   user ? <>  <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button></>: 
   <>  <Link to='/login'>Login</Link></>
