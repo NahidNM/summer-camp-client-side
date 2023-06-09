@@ -7,7 +7,7 @@ const InstructorCart = (props) => {
     
     return (
         <div className="shadow-xl card md:w-96 bg-sky-200">           
-        <figure><img className="pt-5 rounded-tr-3xl rounded-bl-3xl w-72" src={image} alt="Shoes" /></figure>
+        <figure><img className="pt-5 rounded-tr-3xl rounded-bl-3xl w-72 h-72" src={image} alt="Shoes" /></figure>
         
         <div className="flex flex-col items-center card-body">
             <h2 className="card-title">Name : {name}</h2>

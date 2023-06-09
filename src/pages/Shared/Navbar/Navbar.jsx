@@ -52,7 +52,7 @@ const Navbar = () => {
               : "hover:text-green-500 font-medium text-xl"
           }
         >
-          Classes
+         All Class
         </NavLink>
       </li>
       <li>

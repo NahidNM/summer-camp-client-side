@@ -6,7 +6,10 @@ const PopularClass = () => {
     // console.log(classes);
     return (
         <div>
-            <h1 className="text-center">-----------------------Our Popular Class--------------------</h1>
+            <div className="divider"></div>
+            <div className="text-3xl font-semibold text-center divider">Our Popular Class</div>
+            <div className="divider"></div>
+            
             <div className="grid md:grid-cols-3">
                 {
                     classes?.map((popularClass) => <ClassCard key={popularClass._id}
