@@ -1,6 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import gif from '../../../public/Login/World Bicycle Day.gif'
-import { FaGoogle } from 'react-icons/fa'; 
+import gif from '../../../public/Login/World Bicycle Day.gif'; 
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -8,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 import GoggleLogin from "../Shared/SocialLogin/GoggleLogin";
 
 const Login = () => {
-    const { signIn, googleSignIn } = useContext(AuthContext);
+    const { signIn, } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     

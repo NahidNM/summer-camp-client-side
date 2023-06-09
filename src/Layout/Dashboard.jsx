@@ -3,11 +3,14 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, FaUsers, FaCartPlus } from 'react-icons/fa';
 import useCart from "../Hooks/useCart";
 import { MdClass } from "react-icons/md";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
     const [cart] = useCart();
     
-    const isAdmin = true;
+    // const isAdmin = false;
+    const isAdmin = useAdmin();
+    
     
     return (
         <>
@@ -31,12 +34,12 @@ const Dashboard = () => {
       {
                         isAdmin ? <>
                             <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/addItem"> <FaUtensils></FaUtensils> Add an Item</NavLink></li>
+                            <li><NavLink to="/dashboard/addclass"> <FaUtensils></FaUtensils> Add to Class</NavLink></li>
                             <li><NavLink to="/dashboard/manageitems"><FaWallet></FaWallet> Manage Items</NavLink></li>
                             <li><NavLink to="/"><FaBook></FaBook> Manage Bookings(not implemented)</NavLink></li>
                             <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> All Users</NavLink></li>
-                            
-                        </> : <>
+                           </> :
+                           <>
                             <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
                             <li><NavLink to="/"><FaCalendarAlt></FaCalendarAlt> Reservations</NavLink></li>
                             <li><NavLink to="/"><FaWallet></FaWallet> Payment History</NavLink></li>
