@@ -33,7 +33,7 @@ const GoggleLogin = () => {
     return (
         <div>
             <div className="divider"></div>
-            <div className="w-full my-4 text-center">
+            <div className="w-full my-4 text-center ">
             <button onClick={handleGoogleSignIn}  className='flex items-center gap-2 px-3 py-1 mx-auto my-2 text-xl font-semibold text-blue-700 bg-white border rounded-lg border-zincflex'><FaGoogle  /> Loing With Google</button> 
             </div>
         </div>

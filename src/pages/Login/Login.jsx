@@ -79,11 +79,7 @@ const Login = () => {
                 <div>
                     <h1 className='mb-4 text-2xl font-semibold text-center mt-7'>Login With</h1>
                     <GoggleLogin></GoggleLogin>
-                    {/* <div className='gap-4 mt-2 '>
-                        
-                    <button onClick={handleGoogleSignIn}  className='flex items-center gap-2 px-3 py-1 mx-auto my-2 text-xl font-semibold text-blue-700 bg-white border rounded-lg border-zincflex'><FaGoogle  /> Loing With Google</button>                  
-                  
-                </div> */}
+                    
          </div>
             </div>
        

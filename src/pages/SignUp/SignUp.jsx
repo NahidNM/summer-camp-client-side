@@ -4,12 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import GoggleLogin from "../Shared/SocialLogin/GoggleLogin";
+import { useState } from "react";
 
 
 const SignUp = () => {
   const { register, handleSubmit, reset, formState: { errors },  watch, } = useForm();
   const { createUser, updateUserProfile, setReload } = useAuth()
   const navigate = useNavigate();
+  
+  const [error, setError] = useState("");
 
 //   const from = location.state?.from?.pathname || "/login";
   
@@ -58,7 +62,7 @@ const SignUp = () => {
         })
         .catch((Error) => {
             console.log(Error);
-           
+           setError(Error.message)
           });
 };
   
@@ -139,14 +143,20 @@ const SignUp = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            
+                            <p>
+                            {error && <span>{error}</span> }
+                             </p>
                             
                             <div className="mt-6 form-control">
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>
                         </form>
+                       
                         <p><small>Already have an account <Link to="/login">Login</Link></small></p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        
+                      {/* Social Login */}
+                      <GoggleLogin></GoggleLogin>
+                      
                     </div>
                 </div>
             </div>  

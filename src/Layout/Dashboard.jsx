@@ -7,7 +7,7 @@ import { MdClass } from "react-icons/md";
 const Dashboard = () => {
     const [cart] = useCart();
     
-    const isAdmin = false;
+    const isAdmin = true;
     
     return (
         <>
