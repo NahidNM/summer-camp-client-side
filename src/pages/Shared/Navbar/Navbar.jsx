@@ -8,6 +8,7 @@ const Navbar = () => {
   // console.log(user);
   
   const [cart] = useCart();
+  // console.log(cart)
 
   // Log Out handle
   const handleLogOut = () => {
@@ -18,8 +19,10 @@ const Navbar = () => {
       });
   };
 
+  
+  // Header item
   const navOption = (
-    <div className="flex items-center">
+    <div className="items-center md:flex">
       <li>
         <NavLink
           to="/"
@@ -53,7 +56,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-            <Link to="/dashboard/mycart">
+            <Link to="/dashboard/myclass">
                 <button className="gap-2 btn">
                     <FaShoppingCart></FaShoppingCart>
                     <div className="badge badge-secondary">+{cart?.length || 0}</div>

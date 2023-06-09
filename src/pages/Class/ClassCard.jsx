@@ -59,11 +59,11 @@ const ClassCard = (props) => {
         <p className="absolute right-0 px-4 mt-4 mr-4 text-white rounded-md bg-slate-900">${price}</p>
         <div className="flex flex-col items-center card-body">
             <h2 className="card-title">{name}</h2>
-            <p>{instructor}</p>
-            <p>{available_seats}</p>
-            <div className="justify-end card-actions">
-                <button onClick={()=>handleAddToCart(props.class)}   className="mt-4 border-0 border-b-4 border-orange-400 btn btn-outline bg-slate-100">Add to class</button>
-            </div>
+            <p>Instructor : {instructor}</p>
+            <p>Seats : {available_seats}</p>
+            
+             <button onClick={()=>handleAddToCart(props.class)}   className="pt-4 border-0 border-b-4 border-orange-400 btn btn-outline bg-slate-100 card-actions">Add to class</button>
+            
         </div>
     </div>
     );
