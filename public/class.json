@@ -1,6 +1,6 @@
  [
       {
-        "image": "https://example.com/sport_image1.jpg",
+        "image": "https://i.ibb.co/Wk0F14J/football.jpg",
         "name": "Football",
         "instructor": "John Smith",
         "available_seats": 20,
@@ -133,7 +133,7 @@
         "price": 110.00
       },
       {
-        "image": "https://example.com/sport_image20.jpg",
+        "image": "https://i.ibb.co/Gxp9fxt/Fencing.jpg",
         "name": "Fencing",
         "instructor": "Charlotte Wilson",
         "available_seats": 10,

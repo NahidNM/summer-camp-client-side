@@ -1,14 +1,17 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
+
 
 const SignUp = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors },  watch, } = useForm();
   const { createUser, updateUserProfile, setReload } = useAuth()
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
+
+//   const from = location.state?.from?.pathname || "/login";
   
   const onSubmit = data => {
 
@@ -17,11 +20,24 @@ const SignUp = () => {
 
             const loggedUser = result.user;
             console.log(loggedUser);
-
+            
+            
+            
+              
             updateUserProfile(data.name, data.photoURL)
-            .then(()=>{
-                setReload(Date.now())
-            })
+            .then(() => {
+                setReload(Date.now());
+                reset()
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully registered',
+                    showConfirmButton: false,
+                    timer: 1000
+                  })
+                  navigate('/');
+                // navigate(from, { replace: true });
+              });
             
                 // .then(() => {
                     // const saveUser = { name: data.name, email: data.email }
@@ -50,8 +66,12 @@ const SignUp = () => {
 
 
                 // })
-                .catch(error => console.log(error))
+                // .catch(error => console.log(error))
         })
+        .catch((Error) => {
+            console.log(Error);
+           
+          });
 };
   
     return (
@@ -69,28 +89,29 @@ const SignUp = () => {
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span className="text-xl font-semibold label-text">Name</span>
                                 </label>
                                 <input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered" />
                                 {errors.name && <span className="text-red-600">Name is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Photo URL</span>
+                                    <span className="text-xl font-semibold label-text">Photo URL</span>
                                 </label>
                                 <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
                                 {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="text-xl font-semibold label-text">Email</span>
                                 </label>
                                 <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
                                 {errors.email && <span className="text-red-600">Email is required</span>}
                             </div>
+                            
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="text-xl font-semibold label-text">Password</span>
                                 </label>
                                 <input type="password"  {...register("password", {
                                     required: true,
@@ -106,6 +127,32 @@ const SignUp = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
+                            
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="text-xl font-semibold label-text">Confirm Password</span>
+                                </label>
+                                <input
+              type="password"
+              id="confirm_pass"
+              placeholder="Enter your confirm password"
+              className="w-full max-w-xs input input-bordered "
+              {...register("confirmPassword", {
+                required: true,
+                validate: (value) =>
+                  value === watch("password") || "Passwords do not match" ,
+              })}
+            />
+                                {errors.confirmPassword && (
+              <span className="text-red-600">{errors.confirmPassword.message}</span>
+            )}
+            
+                                <label className="label">
+                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                </label>
+                            </div>
+                            
+                            
                             <div className="mt-6 form-control">
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>

@@ -6,7 +6,7 @@ const Additon = () => {
   return (
     <div className='pt-5 bg-yellow-200'>
         <h1 className='text-center md:text-3xl '>Best Sports Players</h1>
-        <div className="grid md:grid-cols-3 md:p-10">
+        <div className="grid space-y-2 md:grid-cols-3 md:p-10">
       <div className="shadow-xl card w-96 bg-base-100">
         <figure className="px-10 pt-10">
           <img

@@ -1,10 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
-import { FaRegUserCircle } from "react-icons/fa";
+import { FaRegUserCircle, FaShoppingCart } from "react-icons/fa";
+import useCart from "../../../Hooks/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  console.log(user);
+  // console.log(user);
+  
+  const [cart] = useCart();
 
   // Log Out handle
   const handleLogOut = () => {
@@ -16,18 +19,14 @@ const Navbar = () => {
   };
 
   const navOption = (
-    <>
+    <div className="flex items-center">
       <li>
         <NavLink
           to="/"
           className={({ isActive }) =>
             isActive
               ? "font-medium tracking-wide text-amber-200 transition-colors duration-200 border md:px-2 rounded-md border-zinc-400 shadow-2xl bg-cyan-700 text-xl"
-              : "hover:text-green-500 font-medium text-xl"
-          }
-        >
-          Home
-        </NavLink>
+              : "hover:text-green-500 font-medium text-xl"} > Home </NavLink>
       </li>
       <li>
         <NavLink
@@ -53,7 +52,15 @@ const Navbar = () => {
           Classes
         </NavLink>
       </li>
-    </>
+      <li>
+            <Link to="/dashboard/mycart">
+                <button className="gap-2 btn">
+                    <FaShoppingCart></FaShoppingCart>
+                    <div className="badge badge-secondary">+{cart?.length || 0}</div>
+                </button>
+            </Link>
+        </li>
+    </div>
   );
 
   return (
@@ -117,7 +124,7 @@ const Navbar = () => {
                 
                 <button
                   onClick={handleLogOut}
-                  className="btn btn-ghost text-xl"
+                  className="text-xl btn btn-ghost"
                 >
                   LogOut
                 </button>
