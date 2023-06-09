@@ -21,52 +21,40 @@ const SignUp = () => {
             const loggedUser = result.user;
             console.log(loggedUser);
             
-            
-            
-              
             updateUserProfile(data.name, data.photoURL)
             .then(() => {
-                setReload(Date.now());
-                reset()
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Successfully registered',
-                    showConfirmButton: false,
-                    timer: 1000
-                  })
-                  navigate('/');
+                console.log('user profile update');
+                
+                const saveUser = {name: data.name, email: data.email}
+                
+                fetch('http://localhost:5000/users',{
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json' 
+                    },
+                    body: JSON.stringify(saveUser)
+                    
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if(data.insertedId){
+                        setReload(Date.now());
+                        reset()
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Successfully registered',
+                            showConfirmButton: false,
+                            timer: 1000
+                          })
+                          navigate('/');
+                    }
+                })
+                
+              
                 // navigate(from, { replace: true });
               });
-            
-                // .then(() => {
-                    // const saveUser = { name: data.name, email: data.email }
-                    // fetch('https://bistro-boss-server-fawn.vercel.app/users', {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'content-type': 'application/json'
-                    //     },
-                    //     body: JSON.stringify(saveUser)
-                    // })
-                        // .then(res => res.json())
-                        // .then(data => {
-                        //     if (data.insertedId) {
-                        //         reset();
-                        //         Swal.fire({
-                        //             position: 'top-end',
-                        //             icon: 'success',
-                        //             title: 'User created successfully.',
-                        //             showConfirmButton: false,
-                        //             timer: 1500
-                        //         });
-                        //         navigate('/');
-                        //     }
-                        // })
-
-
-
-                // })
-                // .catch(error => console.log(error))
         })
         .catch((Error) => {
             console.log(Error);

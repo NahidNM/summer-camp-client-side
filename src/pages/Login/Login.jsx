@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import GoggleLogin from "../Shared/SocialLogin/GoggleLogin";
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext);
@@ -34,19 +35,6 @@ const Login = () => {
                 });
                 navigate(from, { replace: true });
             })
-    }
-    
-    // Google LogIn
-    const handleGoogleSignIn = () =>{
-        googleSignIn()
-        .then(result => {
-            const googleUser = result.user;
-            navigate(from, {replace: true})
-            console.log(googleUser)
-        })
-        .catch(error =>{
-            console.log(error)
-        })
     }
     
     
@@ -90,12 +78,12 @@ const Login = () => {
                 </div>
                 <div>
                     <h1 className='mb-4 text-2xl font-semibold text-center mt-7'>Login With</h1>
-                    
-                    <div className='gap-4 mt-2 '>
+                    <GoggleLogin></GoggleLogin>
+                    {/* <div className='gap-4 mt-2 '>
                         
                     <button onClick={handleGoogleSignIn}  className='flex items-center gap-2 px-3 py-1 mx-auto my-2 text-xl font-semibold text-blue-700 bg-white border rounded-lg border-zincflex'><FaGoogle  /> Loing With Google</button>                  
                   
-                </div>
+                </div> */}
          </div>
             </div>
        
