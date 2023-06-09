@@ -2,7 +2,7 @@
       {
         "image": "https://i.ibb.co/Wk0F14J/football.jpg",
         "name": "Football",
-        "instructor": "John Smith",
+        "instructor": "Lionel Scaloni",
         "available_seats": 20,
         "price": 150.00
       },
@@ -37,7 +37,7 @@
       {
         "image": "https://i.ibb.co/tm0kXM2/Golf.jpg",
         "name": "Golf",
-        "instructor": "Emily Adams",
+        "instructor": "Olivia Brown",
         "available_seats": 8,
         "price": 200.00
       },
@@ -51,7 +51,7 @@
       {
         "image": "https://i.ibb.co/RhCPj77/Hockey.jpg",
         "name": "Hockey",
-        "instructor": "Olivia Brown",
+        "instructor": "Ali Akbar",
         "available_seats": 16,
         "price": 170.00
       },
