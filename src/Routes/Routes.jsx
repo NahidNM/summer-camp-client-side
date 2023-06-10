@@ -57,7 +57,7 @@ import AddItem from "../pages/Dashboard/AddItem/AddItem";
         },
         {
           path: 'addClass',
-          element: <AdminRoute><AddItem></AddItem></AdminRoute>
+          element: <AddItem></AddItem>
         }
       ]
       

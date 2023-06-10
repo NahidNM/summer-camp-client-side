@@ -5,11 +5,22 @@ import useCart from "../Hooks/useCart";
 import { MdClass } from "react-icons/md";
 import useAdmin from "../Hooks/useAdmin";
 
+import useVarifyInstructor from "../Hooks/useVarifyInstructor";
+import useAuth from "../Hooks/useAuth";
+
 const Dashboard = () => {
+  
+  const {user} = useAuth();
+  console.log(user?.photoURL);
     const [cart] = useCart();
     
     // const isAdmin = false;
-    const isAdmin = useAdmin();
+    const [isAdmin] = useAdmin();
+    // console.log(isAdmin);
+    
+  const [isInstructor] = useVarifyInstructor()
+  // console.log(isInstructor)
+
     
     
     return (
@@ -26,21 +37,36 @@ const Dashboard = () => {
     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
   
   </div> 
-  
+
+ 
   <div className="drawer-side bg-[#D1A054]">
-    <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
+   
+    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+    
+    
     <ul className="p-4 menu w-80">
+    <div className="mx-auto ">
+    <img className="w-24 rounded-full " src={user?.photoURL} alt="" /> 
+    <h1 className="font-semibold ">{user?.displayName}</h1>
+    <p className="">{user.email}</p>
+    </div>
       {/* Sidebar content here */}
       {
                         isAdmin ? <>
                             <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/addclass"> <FaUtensils></FaUtensils> Add to Class</NavLink></li>
-                            <li><NavLink to="/dashboard/manageitems"><FaWallet></FaWallet> Manage Items</NavLink></li>
-                            <li><NavLink to="/"><FaBook></FaBook> Manage Bookings(not implemented)</NavLink></li>
+                            
+                            <li><NavLink to="/"><FaWallet></FaWallet> Manage Classes</NavLink></li>
+                            {/* <li><NavLink to="/"><FaBook></FaBook> Manage Bookings(not implemented)</NavLink></li> */}
                             <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> All Users</NavLink></li>
-                           </> :
+                           </> 
+                           :
+                           isInstructor ? <>
+                          <li><NavLink to='/'><FaHome></FaHome> Instructor Home</NavLink></li>
+                          <li><NavLink to="/dashboard/addclass"> <FaUtensils></FaUtensils> Add to Class</NavLink></li>
+                           </>  
+                           :
                            <>
-                            <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
+                            <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
                             <li><NavLink to="/"><FaCalendarAlt></FaCalendarAlt> Reservations</NavLink></li>
                             <li><NavLink to="/"><FaWallet></FaWallet> Payment History</NavLink></li>
                             <li>
@@ -58,7 +84,8 @@ const Dashboard = () => {
 
     </ul>
   
-  </div>
+  
+ </div>
 </div>
         </>
     );
