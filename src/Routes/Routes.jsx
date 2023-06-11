@@ -49,6 +49,8 @@ import Payment from "../pages/Dashboard/Payment/Payment";
       path: 'dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
+
+        // User Dashboard
         {
           path: 'payment',
           element: <Payment></Payment>
@@ -57,10 +59,14 @@ import Payment from "../pages/Dashboard/Payment/Payment";
           path: 'myclass',
           element: <MyClass></MyClass>
         },
+
+        // Admin Dashboard 
         {
           path:'allusers',
-          element: <AllUsers></AllUsers>
+          element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
         },
+
+        // Insturctor Dashboard
         {
           path:'instructorhome',
           element: <Instructor/>
