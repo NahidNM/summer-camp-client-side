@@ -4,7 +4,8 @@
         "name": "Football",
         "instructor": "Lionel Scaloni",
         "available_seats": 20,
-        "price": 150.00
+        "price": 150.00,
+        "enroll": 0
       },
       {
         "image": "https://i.ibb.co/zVYnWFX/basketball.jpg",

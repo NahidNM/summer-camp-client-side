@@ -11,7 +11,7 @@ const Class = () => {
             <Helmet>
         <title>Sumner Sports camp | Classes</title>
       </Helmet>
-            <div className='grid gap-10 pt-20 md:grid-cols-3'>
+            <div className='grid gap-10 pt-20 md:grid-cols-3 '>
             {
                     classes.map((item) => <ClassCard
                         key={item._id}

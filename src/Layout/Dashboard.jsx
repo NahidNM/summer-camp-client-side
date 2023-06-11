@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, FaUsers, FaCartPlus } from 'react-icons/fa';
 import useCart from "../Hooks/useCart";
 import { MdClass } from "react-icons/md";
@@ -7,14 +7,16 @@ import useAdmin from "../Hooks/useAdmin";
 
 import useVarifyInstructor from "../Hooks/useVarifyInstructor";
 import useAuth from "../Hooks/useAuth";
+import useEnroll from "../Hooks/useEnroll";
 
 const Dashboard = () => {
   
   const {user} = useAuth();
   // console.log(user?.photoURL);
     const [cart] = useCart();
+    const [enrollClasses] = useEnroll()
     
-    // const isAdmin = false;
+    // const isAdmin = try;
     const [isAdmin] = useAdmin();
     // console.log(isAdmin);
     
@@ -63,17 +65,21 @@ const Dashboard = () => {
                            isInstructor ? <>
                           <li><NavLink to='/dashboard/instructorhome'><FaHome></FaHome> Instructor Home</NavLink></li>
                           <li><NavLink to="/dashboard/addclass"> <FaUtensils></FaUtensils> Add to Class</NavLink></li>
+                          <li><NavLink to="/dashboard/myaddclass"> <MdClass></MdClass>My Add Class</NavLink></li>
                            </>  
                            :
                            <>
-                            <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
-                            <li><NavLink to="/dashboard/reservation"><FaCalendarAlt></FaCalendarAlt> Reservations</NavLink></li>
-                            <li><NavLink to="/dashboard/payment"><FaWallet></FaWallet> Payment History</NavLink></li>
+                            <li><Link><FaHome></FaHome> User Home</Link></li>                         
                             <li>
                                 <NavLink to="/dashboard/myclass"><FaShoppingCart></FaShoppingCart> My Class
-                                    <span className="badge inl badge-secondary">+{cart?.length || 0}</span>
+                                    {/* <span className="badge inl badge-secondary">+{cart?.length || 0}</span> */}
                                 </NavLink>
                             </li>
+                            <li><NavLink to="/dashboard/enrollclass"><FaWallet></FaWallet> Enroll Class
+                            {/* <span className="badge inl badge-secondary">+{enrollClasses?.length || 0}</span> */}
+                            </NavLink></li>
+                            <li><NavLink to="/dashboard/payhistory"><FaWallet></FaWallet> Payment History</NavLink></li>
+                            
                         </>
                     }
                     

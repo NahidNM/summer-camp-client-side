@@ -54,7 +54,7 @@ const ClassCard = (props) => {
     }
     
     return (
-        <div className="shadow-xl card md:w-96 bg-sky-200">           
+        <div className="my-5 shadow-xl card md:w-96 bg-sky-200">           
         <figure><img className="pt-5 rounded-lg" src={image} alt="Shoes" /></figure>
         <p className="absolute right-0 px-4 mt-4 mr-4 text-white rounded-md bg-slate-900">${price}</p>
         <div className="flex flex-col items-center card-body">

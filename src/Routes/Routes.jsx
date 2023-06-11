@@ -16,6 +16,9 @@ import AdminRoute from "./AdminRoute";
 import AddItem from "../pages/Dashboard/AddItem/AddItem";
 import Instructor from "../pages/Dashboard/Instructor/Instructor";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import EnroolClass from "../pages/Dashboard/EnrollClass/EnroolClass";
+import PayHistory from "../pages/Dashboard/PayHistory/PayHistory";
+import MyAddClass from "../pages/Dashboard/MyAddClass/MyAddClass";
 
  export const router = createBrowserRouter([
     {
@@ -52,12 +55,21 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 
         // User Dashboard
         {
-          path: 'payment',
-          element: <Payment></Payment>
+          path: 'payment/:id',
+          element: <Payment></Payment>,
+          loader: (({params})=> fetch(`http://localhost:5000/addClasses/${params.id}`))
         },
         {
           path: 'myclass',
           element: <MyClass></MyClass>
+        },
+        {
+          path: 'enrollclass',
+          element: <EnroolClass></EnroolClass>
+        },
+        {
+          path: 'payhistory',
+          element: <PayHistory></PayHistory>
         },
 
         // Admin Dashboard 
@@ -74,6 +86,10 @@ import Payment from "../pages/Dashboard/Payment/Payment";
         {
           path: 'addClass',
           element: <AddItem></AddItem>
+        },
+        {
+          path: 'myaddclass',
+          element: <MyAddClass></MyAddClass>
         }
       ]
       

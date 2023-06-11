@@ -88,7 +88,7 @@ const MyClass = () => {
                                     
                                 </td>
                                 <td>
-                                <Link to="/dashboard/payment">
+                                <Link to={`/dashboard/payment/${item._id}`}>
                                   <button className="ml-3 text-white bg-orange-400 btn btn-ghost">PAY</button>
                                       </Link>
                                 </td>

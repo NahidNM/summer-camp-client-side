@@ -1,17 +1,34 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAuth from "../../../Hooks/useAuth";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
-const CheakoutForm = () => {
-
+const CheakoutForm = ({price, singlecart}) => {
+console.log(singlecart);
     const stripe = useStripe();
     const elements = useElements()
     
+    const {user} = useAuth();
+    const [axiosSecure] = useAxiosSecure()
     
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
+    
+    useEffect(() => {
+      if (price > 0) {
+          axiosSecure.post('/create-payment-intent', { price })
+              .then(res => {
+                  // console.log(res.data.clientSecret)
+                  setClientSecret(res.data.clientSecret);
+              })
+      }
+  }, [price, axiosSecure])
+
+    
 
     const handleSubmit = async (event) =>{
            event.preventDefault();
@@ -24,16 +41,90 @@ const CheakoutForm = () => {
            if(card === null){
             return;
            }
-           const {error, paymentMethod} = await stripe.createPaymentMethod({
+           
+           const {error} = await stripe.createPaymentMethod({
             type: 'card',
             card,
           });
+          
           if (error) {
             console.log('error', error);
             setCardError(error.message)
           } else {
-            console.log('PaymentMethod', paymentMethod);
+            // console.log('PaymentMethod', paymentMethod);
+            setCardError('')
           }
+          
+          setProcessing(true)
+
+          const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+              clientSecret,
+              {
+                  payment_method: {
+                      card: card,
+                      billing_details: {
+                          email: user?.email || 'unknown',
+                          name: user?.displayName || 'anonymous'
+                      },
+                  },
+              },
+          );
+  
+          if (confirmError) {
+              console.log(confirmError);
+          }
+  
+          // console.log('payment intent', paymentIntent)
+          setProcessing(false)
+          if (paymentIntent.status === 'succeeded') {
+              setTransactionId(paymentIntent.id);
+              // console.log(paymentIntent);
+              // save payment information to the server
+              const userpayment = {
+                  email: user?.email,
+                  transactionId: paymentIntent.id,
+                  price,
+                  date: new Date(),
+                  // classId: singleCart._id,
+                  userId: singlecart.classAddId,
+                  status: 'pending',
+                  name: singlecart.name,
+                  image: singlecart.image,
+                  instructor: singlecart.instructor,                     
+              }
+             
+             axiosSecure.post('/payment', userpayment)
+                  .then(res => {
+                      console.log('payment',res.data);
+                      if (res.data.insertResult.insertedId) {
+                        Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: 'Your work has been saved',
+                          showConfirmButton: false,
+                          timer: 1500
+                        })
+                      }
+                  })
+          }
+          
+          fetch(`http://localhost:5000/classupdatedata/${singlecart.classAddId}`)
+          .then(res => res.json())
+          .then(data => {
+            const newseat = data.available_seats-1;
+            const newEnroll = data.enroll+1;
+            
+            const newUpdateClass = (newseat, newEnroll);
+            
+            fetch(`http://localhost:5000/classupdatedata/${singlecart.classAddId}`,{
+              method: 'PUT',
+              headers: {
+                'content-type': 'application/json'
+              },
+            body: JSON.stringify(newUpdateClass)
+            })
+          })
+          
         };
     
 
@@ -57,7 +148,7 @@ const CheakoutForm = () => {
             },
           }}
         />
-        <button className="mt-4 btn btn-outline btn-primary btn-sm" type="submit" disabled={!stripe}>
+        <button className="mt-4 btn btn-outline btn-primary btn-sm" type="submit" >
           Pay
         </button>
       </form>
