@@ -56,7 +56,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-            <Link to="/dashboard/myclass">
+            <Link to="/dashboard">
                 <button className="gap-2 btn">
                     <FaShoppingCart></FaShoppingCart>
                     <div className="badge badge-secondary">+{cart?.length || 0}</div>

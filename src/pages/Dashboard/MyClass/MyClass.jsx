@@ -49,9 +49,7 @@ const MyClass = () => {
             <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center bg-orange-200 rounded-lg ">
                 <h3 className="text-3xl">Total Items: {cart.length}</h3>
                 <h3 className="text-3xl">Total Price: ${total}</h3>
-                <Link to="/dashboard/payment">
-                    <button className="btn btn-warning btn-sm">PAY</button>
-                </Link>
+                
             </div>
             <div className="w-full overflow-x-auto bg-orange-300 rounded-lg">
                 <table className="table w-full">
@@ -63,6 +61,7 @@ const MyClass = () => {
                             <th>Class Name</th>
                             <th>Price</th>
                             <th>Action</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody className="">
@@ -84,8 +83,14 @@ const MyClass = () => {
                                     {item.name}
                                 </td>
                                 <td className="">${item.price}</td>
-                                <td>
+                                <td className="gap-3">
                                     <button onClick={()=>handleDelete(item)} className="text-white bg-red-600 btn btn-ghost"><FaTrashAlt></FaTrashAlt></button>
+                                    
+                                </td>
+                                <td>
+                                <Link to="/dashboard/payment">
+                                  <button className="ml-3 text-white bg-orange-400 btn btn-ghost">PAY</button>
+                                      </Link>
                                 </td>
                             </tr>)
                         }

@@ -61,14 +61,14 @@ const Dashboard = () => {
                            </> 
                            :
                            isInstructor ? <>
-                          <li><NavLink to='/'><FaHome></FaHome> Instructor Home</NavLink></li>
+                          <li><NavLink to='/dashboard/instructorhome'><FaHome></FaHome> Instructor Home</NavLink></li>
                           <li><NavLink to="/dashboard/addclass"> <FaUtensils></FaUtensils> Add to Class</NavLink></li>
                            </>  
                            :
                            <>
-                            <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
-                            <li><NavLink to="/"><FaCalendarAlt></FaCalendarAlt> Reservations</NavLink></li>
-                            <li><NavLink to="/"><FaWallet></FaWallet> Payment History</NavLink></li>
+                            <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
+                            <li><NavLink to="/dashboard/reservation"><FaCalendarAlt></FaCalendarAlt> Reservations</NavLink></li>
+                            <li><NavLink to="/dashboard/payment"><FaWallet></FaWallet> Payment History</NavLink></li>
                             <li>
                                 <NavLink to="/dashboard/myclass"><FaShoppingCart></FaShoppingCart> My Class
                                     <span className="badge inl badge-secondary">+{cart?.length || 0}</span>

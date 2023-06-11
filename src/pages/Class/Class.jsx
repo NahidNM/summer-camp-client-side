@@ -7,7 +7,7 @@ const Class = () => {
     // console.log(classes)
   
     return (
-        <div className="md:pt-20">
+        <div className="mb-10 md:pt-20">
             <Helmet>
         <title>Sumner Sports camp | Classes</title>
       </Helmet>

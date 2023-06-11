@@ -32,8 +32,10 @@ const AddItem = () => {
                 const {name, price, instructor, available_seats, email,} = data;
                 
                 const newClass = {name, price: parseFloat(price), instructor, available_seats: parseFloat(available_seats), email, image:imgURL}
-                console.log('new',newClass)                        
-                axiosSecure.post('/menu', newClass)
+                console.log('new',newClass);
+                  
+                //post   
+                axiosSecure.post('/classes', newClass)
                 .then(data => {
                     console.log('after posting new menu item', data.data)
                     if(data.data.insertedId){
