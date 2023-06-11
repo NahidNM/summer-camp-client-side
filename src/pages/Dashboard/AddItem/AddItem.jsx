@@ -1,18 +1,62 @@
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import SectionTitle from "../../../component/SectionTitle";
+import Swal from "sweetalert2";
 
+const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 
 const AddItem = () => {
     
     const [axiosSecure] = useAxiosSecure();
     const { register, handleSubmit, reset } = useForm();
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+    
+   
+    // console.log(img_hosting_token);
+    
+    const onSubmit = data => {
+        // console.log(data);
+       
+        const formData = new FormData();
+        formData.append('image', data.image[0])
+
+        fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(imgResponse => {
+            console.log(imgResponse);
+            if(imgResponse.success){
+                const imgURL = imgResponse.data.display_url;
+                const {name, price, instructor, available_seats, email,} = data;
+                
+                const newClass = {name, price: parseFloat(price), instructor, available_seats: parseFloat(available_seats), email, image:imgURL}
+                console.log('new',newClass)                        
+                axiosSecure.post('/menu', newClass)
+                .then(data => {
+                    console.log('after posting new menu item', data.data)
+                    if(data.data.insertedId){
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Item added successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
+            }
+        })
+
+    };
     
     
     return (
         <div className="w-full px-10 bg-orange-300">
             <SectionTitle title='Add a Class' ></SectionTitle>
-            <form >
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="w-full mb-4 form-control">
                     <label className="label">
                         <span className="font-semibold label-text">Class Name*</span>
@@ -34,7 +78,7 @@ const AddItem = () => {
                         <label className="label">
                             <span className="font-semibold label-text">Instructor Email*</span>
                         </label>
-                        <input type="email" {...register("price", { required: true })} placeholder="Type here" className="w-full input input-bordered " />
+                        <input type="email" {...register("email", { required: true })} placeholder="Type here" className="w-full input input-bordered " />
                     </div>
                 </div>
                 <div className="flex my-4">

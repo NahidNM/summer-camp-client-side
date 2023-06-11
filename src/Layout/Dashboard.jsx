@@ -11,7 +11,7 @@ import useAuth from "../Hooks/useAuth";
 const Dashboard = () => {
   
   const {user} = useAuth();
-  console.log(user?.photoURL);
+  // console.log(user?.photoURL);
     const [cart] = useCart();
     
     // const isAdmin = false;
