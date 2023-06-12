@@ -19,6 +19,7 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import EnroolClass from "../pages/Dashboard/EnrollClass/EnroolClass";
 import PayHistory from "../pages/Dashboard/PayHistory/PayHistory";
 import MyAddClass from "../pages/Dashboard/MyAddClass/MyAddClass";
+import MangeClass from "../pages/Dashboard/MangeClass/MangeClass";
 
  export const router = createBrowserRouter([
     {
@@ -76,6 +77,10 @@ import MyAddClass from "../pages/Dashboard/MyAddClass/MyAddClass";
         {
           path:'allusers',
           element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+        },
+        {
+          path: 'manageclass',
+          element: <MangeClass></MangeClass>
         },
 
         // Insturctor Dashboard

@@ -85,36 +85,22 @@ console.log(singlecart);
                   transactionId: paymentIntent.id,
                   price,
                   date: new Date(),
-                  // classId: singleCart._id,
+                  classId: singlecart._id,
                   userId: singlecart.classAddId,
                   status: 'pending',
                   name: singlecart.name,
                   image: singlecart.image,
                   instructor: singlecart.instructor,                     
               }
-             
-             axiosSecure.post('/payment', userpayment)
-                  .then(res => {
-                      console.log('payment',res.data);
-                      if (res.data.insertResult.insertedId) {
-                        Swal.fire({
-                          position: 'top-end',
-                          icon: 'success',
-                          title: 'Your work has been saved',
-                          showConfirmButton: false,
-                          timer: 1500
-                        })
-                      }
-                  })
-          }
-          
-          fetch(`http://localhost:5000/classupdatedata/${singlecart.classAddId}`)
+              
+              
+              fetch(`http://localhost:5000/classupdatedata/${singlecart.classAddId}`)
           .then(res => res.json())
           .then(data => {
             const newseat = data.available_seats-1;
-            const newEnroll = data.enroll+1;
+            // const newEnroll = data.enroll+1;
             
-            const newUpdateClass = (newseat, newEnroll);
+            const newUpdateClass ={newseat};
             
             fetch(`http://localhost:5000/classupdatedata/${singlecart.classAddId}`,{
               method: 'PUT',
@@ -124,6 +110,23 @@ console.log(singlecart);
             body: JSON.stringify(newUpdateClass)
             })
           })
+             
+             axiosSecure.post('/payment', userpayment)
+                  .then(res => {
+                      console.log('payment',res.data);
+                      if (res.data.insertResult.insertedId) {
+                        Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: 'Payment successful',
+                          showConfirmButton: false,
+                          timer: 1500
+                        })
+                      }
+                  })
+          }
+          
+          
           
         };
     

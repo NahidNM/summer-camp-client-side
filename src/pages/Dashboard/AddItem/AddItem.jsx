@@ -15,7 +15,7 @@ const AddItem = () => {
     // console.log(img_hosting_token);
     
     const onSubmit = data => {
-        // console.log(data);
+        console.log(data);
        
         const formData = new FormData();
         formData.append('image', data.image[0])
@@ -29,9 +29,18 @@ const AddItem = () => {
             console.log(imgResponse);
             if(imgResponse.success){
                 const imgURL = imgResponse.data.display_url;
-                const {name, price, instructor, available_seats, email,} = data;
+                const {name, price, instructor, available_seats, email, status, enroll} = data;
                 
-                const newClass = {name, price: parseFloat(price), instructor, available_seats: parseFloat(available_seats), email, image:imgURL}
+                const newClass = {name: name, 
+                    price: parseFloat(price),
+                     instructor: instructor,
+                      available_seats: parseFloat(available_seats),
+                       email: email,
+                        image:imgURL,
+                        status: status,
+                        enroll: parseFloat(enroll)
+                        
+                    }
                 console.log('new',newClass);
                   
                 //post   
@@ -90,6 +99,12 @@ const AddItem = () => {
                         </label>
                         <input type="number" placeholder="Class Name"
                         {...register("available_seats", { required: true })}
+                        className="w-full input input-bordered " />
+                        <input type="text" hidden defaultValue={"Pending"} placeholder="sssss"
+                        {...register("status", { required: true })}
+                        className="w-full input input-bordered " />
+                        <input type="text" hidden defaultValue={0} placeholder="sssss"
+                        {...register("enroll", { required: true })}
                         className="w-full input input-bordered " />
                     </div>
                     <div className="w-full ml-4 form-control">
