@@ -11,11 +11,17 @@ const PopularClass = () => {
             <div className="divider"></div>
             
             <div className="grid md:grid-cols-3">
-                {
-                    classes?.map((popularClass) => <ClassCard key={popularClass._id}
+                {/* {
+                    classes?.map?.slice(0, 6)((popularClass) => <ClassCard key={popularClass._id}
                     class={popularClass}
                     ></ClassCard> )
-                }
+                } */}
+                {
+                classes.filter((classes) => classes.status !== 'Pending').slice(0, 6).map((popularClass) =>
+                <ClassCard key={popularClass._id}
+                    class={popularClass}
+                    ></ClassCard> )
+               }
             </div>
         </div>
     );

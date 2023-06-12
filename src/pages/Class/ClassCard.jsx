@@ -2,14 +2,19 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../Hooks/useCart";
+import useAdmin from "../../Hooks/useAdmin";
+import useVarifyInstructor from "../../Hooks/useVarifyInstructor";
 
 const ClassCard = (props) => {
     // console.log(props.class)
-    const {name, image, instructor, price, available_seats, _id}=props.class;
+    const {name, image, instructor, price, available_seats, _id, enroll}=props.class;
     const {user} = useAuth();
     const navigate = useNavigate()
     const location = useLocation();
     const [, refetch]= useCart();
+    
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useVarifyInstructor()
     
     const handleAddToCart = item =>{
         console.log(item);
@@ -54,15 +59,19 @@ const ClassCard = (props) => {
     }
     
     return (
-        <div className="my-5 shadow-xl card md:w-96 bg-sky-200">           
+        <div className="my-2 shadow-xl card md:w-96 bg-sky-200">           
         <figure><img className="pt-5 rounded-lg" src={image} alt="Shoes" /></figure>
         <p className="absolute right-0 px-4 mt-4 mr-4 text-white rounded-md bg-slate-900">${price}</p>
         <div className="flex flex-col items-center card-body">
             <h2 className="card-title">{name}</h2>
             <p>Instructor : {instructor}</p>
+            <p>Enroll : {enroll}</p>
             <p>Seats : {available_seats}</p>
             
-             <button onClick={()=>handleAddToCart(props.class)}   className="pt-4 border-0 border-b-4 border-orange-400 btn btn-outline bg-slate-100 card-actions">Add to class</button>
+            {
+              available_seats !== 0 && !isAdmin && !isInstructor ? 
+              <button onClick={()=>handleAddToCart(props.class)}   className="pt-4 bg-indigo-600 border-0 border-b-4 border-orange-400 btn btn-outline card-actions">Add to class</button>:<button disabled  className="pt-4 border-0 border-b-4 border-orange-400 btn btn-outline card-actions">Add to class</button> 
+            }
             
         </div>
     </div>

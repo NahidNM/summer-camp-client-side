@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import useClass from '../../Hooks/useClass';
 import ClassCard from './ClassCard';
+import SectionTitle from '../../component/SectionTitle';
 
 const Class = () => {
     const [classes] = useClass();
@@ -11,7 +12,8 @@ const Class = () => {
             <Helmet>
         <title>Sumner Sports camp | Classes</title>
       </Helmet>
-            <div className='grid gap-10 pt-20 md:grid-cols-3 '>
+      <SectionTitle title="All Sports Class "></SectionTitle>
+            <div className='grid gap-5 md:grid-cols-3 '>
             {
                     classes.map((item) => <ClassCard
                         key={item._id}

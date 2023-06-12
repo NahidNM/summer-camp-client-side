@@ -2,6 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import { FaRegUserCircle, FaShoppingCart } from "react-icons/fa";
 import useCart from "../../../Hooks/useCart";
+import logo from '../../../../public/logo/Summer Sports.png'
+import useAdmin from "../../../Hooks/useAdmin";
+import useVarifyInstructor from "../../../Hooks/useVarifyInstructor";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -9,6 +12,9 @@ const Navbar = () => {
   
   const [cart] = useCart();
   // console.log(cart)
+  
+  const [isAdmin] =useAdmin()
+  const [isInstructor] =useVarifyInstructor()
 
   // Log Out handle
   const handleLogOut = () => {
@@ -28,7 +34,7 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "font-medium tracking-wide text-amber-200 transition-colors duration-200 border md:px-2 rounded-md border-zinc-400 shadow-2xl bg-cyan-700 text-xl"
+              ? "font-medium tracking-wide transition-colors duration-200 border md:px-2 rounded-md border-zinc-400 shadow-2xl bg-cyan-700 text-xl"
               : "hover:text-green-500 font-medium text-xl"} > Home </NavLink>
       </li>
       <li>
@@ -36,7 +42,7 @@ const Navbar = () => {
           to="/instructors"
           className={({ isActive }) =>
             isActive
-              ? "font-medium tracking-wide text-amber-200 transition-colors duration-200 border px-2 rounded-md border-zinc-400 shadow-2xl bg-cyan-700 text-xl"
+              ? "font-medium tracking-wide transition-colors duration-200 border px-2 rounded-md border-zinc-400 shadow-2xl bg-cyan-700 text-xl"
               : "hover:text-green-500 font-medium text-xl"
           }
         >
@@ -48,16 +54,23 @@ const Navbar = () => {
           to="/class"
           className={({ isActive }) =>
             isActive
-              ? "font-medium tracking-wide text-amber-200 transition-colors duration-200 border px-2 rounded-md border-zinc-400 shadow-2xl bg-cyan-700 text-xl"
+              ? "font-medium tracking-wide  transition-colors duration-200 border px-2 rounded-md border-zinc-400 shadow-2xl bg-cyan-700 text-xl"
               : "hover:text-green-500 font-medium text-xl"
           }
         >
          All Class
         </NavLink>
-      </li>
+        </li>
+        {
+            isAdmin ? <li className="text-xl font-semibold"><Link to="/dashboard/adminhome">Dashboard</Link></li> : 
+            isInstructor ? <li className="text-xl font-semibold"><Link to="/dashboard/instructorhome">Dashboard</Link></li> :
+            <li className="text-xl font-semibold"><Link to="/dashboard/userhome">Dashboard</Link></li>
+        }
+        
+      
       <li>
             <Link to="/dashboard">
-                <button className="gap-2 btn">
+                <button className="gap-2 btn-secondary btn">
                     <FaShoppingCart></FaShoppingCart>
                     <div className="badge badge-secondary">+{cart?.length || 0}</div>
                 </button>
@@ -68,7 +81,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed z-10 max-w-screen-xl text-white bg-black opacity-50 navbar">
+      <div className="fixed z-10 max-w-screen-xl text-black bg-white navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -94,7 +107,11 @@ const Navbar = () => {
               {navOption}
             </ul>
           </div>
-          <a className="text-xl normal-case btn btn-ghost">sports school</a>
+         <div className="flex items-center gap-2">
+         <img src={logo} alt="" className="w-14" />
+         <h1 className="hidden text-2xl normal-case text-amber-500 md:block">Playfit Sports</h1>
+          
+         </div>
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">{navOption}</ul>

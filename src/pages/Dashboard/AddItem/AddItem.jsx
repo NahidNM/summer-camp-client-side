@@ -2,10 +2,13 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import SectionTitle from "../../../component/SectionTitle";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 
 const AddItem = () => {
+    
+    const {user} = useAuth()
     
     const [axiosSecure] = useAxiosSecure();
     const { register, handleSubmit, reset } = useForm();
@@ -81,15 +84,15 @@ const AddItem = () => {
                         <label className="label">
                             <span className="label-text">Instructor Name*</span>
                         </label>
-                        <input type="text" placeholder="Class Name"
-                        {...register("instructor", { required: true, maxLength: 120 })}
+                        <input type="text" placeholder="Instructor Name" defaultValue={user.displayName}                     
+                        {...register("instructor",  { required: true, maxLength: 120 })}
                         className="w-full input input-bordered " />
                     </div>
                     <div className="w-full ml-4 form-control">
                         <label className="label">
                             <span className="font-semibold label-text">Instructor Email*</span>
                         </label>
-                        <input type="email" {...register("email", { required: true })} placeholder="Type here" className="w-full input input-bordered " />
+                        <input type="email" defaultValue={user.email} {...register("email", { required: true })} placeholder="Type here" className="w-full input input-bordered " />
                     </div>
                 </div>
                 <div className="flex my-4">

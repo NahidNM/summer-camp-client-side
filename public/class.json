@@ -5,140 +5,179 @@
         "instructor": "Lionel Scaloni",
         "available_seats": 20,
         "price": 150.00,
-        "enroll": 0
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/zVYnWFX/basketball.jpg",
         "name": "Basketball",
         "instructor": "Sarah Johnson",
         "available_seats": 15,
-        "price": 100.00
+        "price": 100.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/HD5G4Jb/tennis.jpg",
         "name": "Tennis",
         "instructor": "Michael Davis",
         "available_seats": 10,
-        "price": 120.00
+        "price": 120.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/SN3C2zz/soccer.jpg",
         "name": "Soccer",
         "instructor": "Jessica Wilson",
         "available_seats": 18,
-        "price": 130.00
+        "price": 130.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/1rgpHLj/Volleyball.jpg",
         "name": "Volleyball",
         "instructor": "Andrew Thompson",
         "available_seats": 12,
-        "price": 90.00
+        "price": 90.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/tm0kXM2/Golf.jpg",
         "name": "Golf",
         "instructor": "Olivia Brown",
         "available_seats": 8,
-        "price": 200.00
+        "price": 200.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/M9Lb4xn/Baseball.jpg",
         "name": "Baseball",
         "instructor": "Daniel Roberts",
         "available_seats": 25,
-        "price": 110.00
+        "price": 110.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/RhCPj77/Hockey.jpg",
         "name": "Hockey",
         "instructor": "Ali Akbar",
         "available_seats": 16,
-        "price": 170.00
+        "price": 170.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/5cydRN5/download.jpg",
         "name": "Badminton",
         "instructor": "William Wilson",
         "available_seats": 10,
-        "price": 80.00
+        "price": 80.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/ZKts7x7/Table-Tennis.jpg",
         "name": "Table Tennis",
         "instructor": "Sophia Clark",
         "available_seats": 12,
-        "price": 70.00
+        "price": 70.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/615TBMN/Cricket.jpg",
         "name": "Cricket",
         "instructor": "Jacob Martin",
         "available_seats": 18,
-        "price": 140.00
+        "price": 140.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/txCdQkf/Rugby.jpg",
         "name": "Rugby",
         "instructor": "Isabella Martinez",
         "available_seats": 15,
-        "price": 160.00
+        "price": 160.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/YcVwymp/Athletics.jpg",
         "name": "Athletics",
         "instructor": "Liam Thompson",
         "available_seats": 20,
-        "price": 100.00
+        "price": 100.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/rbj0dHy/Swimming.jpg",
         "name": "Swimming",
         "instructor": "Ava Roberts",
         "available_seats": 12,
-        "price": 90.00
+        "price": 90.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/Sd7fZG2/Martial-Arts.jpg",
         "name": "Martial Arts",
         "instructor": "Noah Wilson",
         "available_seats": 10,
-        "price": 120.00
+        "price": 120.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/hgTLVMk/Gymnastics.jpg",
         "name": "Gymnastics",
         "instructor": "Mia Anderson",
         "available_seats": 8,
-        "price": 180.00
+        "price": 180.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/FWgVqyN/Cycling.jpg",
         "name": "Cycling",
         "instructor": "James Brown",
         "available_seats": 15,
-        "price": 80.00
+        "price": 80.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/z2scC4n/Skating.jpg",
         "name": "Skating",
         "instructor": "Emma Davis",
         "available_seats": 10,
-        "price": 100.00
+        "price": 100.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/Cn7Nfnc/Archery.jpg",
         "name": "Archery",
         "instructor": "Benjamin Thompson",
         "available_seats": 12,
-        "price": 110.00
+        "price": 110.00,
+        "enroll": 0,
+        "status": "Approved"
       },
       {
         "image": "https://i.ibb.co/Gxp9fxt/Fencing.jpg",
         "name": "Fencing",
         "instructor": "Charlotte Wilson",
         "available_seats": 10,
-        "price": 130.00
+        "price": 130.00,
+        "enroll": 0,
+        "status": "Approved"
       }
     ]
   

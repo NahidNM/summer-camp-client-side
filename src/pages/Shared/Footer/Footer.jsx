@@ -1,12 +1,13 @@
 import { FaFacebook, FaGoogle, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import logo from '../../../../public/logo/Summer Sports.png'
 
 const Footer = () => {
     return (
         
-<div className="text-center">
+<div className="">
 <div className="grid-cols-2 p-3 space-y-10 bg-gray-700 md:grid md:-mt-6 lg:grid-cols-4">
     <div className="w-1/2 md:ml-24 md:mt-9 md:w-3/4">
-        <h1 className="text-xl font-medium text-orange-400">Company</h1> <br />
+        <h1 className="text-xl font-medium text-orange-400"> <img src={logo} alt="" className="w-14" /></h1> <br />
         <p className="text-base text-gray-300/80 hover:text-yellow-300 cursor-none">Bhaduria <br /> Dinajpur,
             PB 535022 <br /> Bangladesh </p> <br />
         <p className="text-base cursor-pointer text-gray-200/80 hover:text-yellow-300"> <strong

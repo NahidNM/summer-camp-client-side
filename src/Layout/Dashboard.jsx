@@ -69,7 +69,7 @@ const Dashboard = () => {
                            </>  
                            :
                            <>
-                            <li><Link><FaHome></FaHome> User Home</Link></li>                         
+                            <li><Link to="/dashboard/userhome"><FaHome></FaHome> User Home</Link></li>                         
                             <li>
                                 <NavLink to="/dashboard/myclass"><FaShoppingCart></FaShoppingCart> My Class
                                     {/* <span className="badge inl badge-secondary">+{cart?.length || 0}</span> */}
@@ -85,10 +85,8 @@ const Dashboard = () => {
                     
                     <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
-                    <li><NavLink to="/class"><MdClass></MdClass> Classes</NavLink></li>
-                    <li><NavLink to="/order/salad"> <FaCartPlus></FaCartPlus>Enroll Class</NavLink></li>
-
-    </ul>
+                    <li><NavLink to="/class"><MdClass></MdClass>All Class</NavLink></li>
+  </ul>
   
   
  </div>

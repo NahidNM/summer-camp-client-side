@@ -1,10 +1,11 @@
+import useAuth from "../../../Hooks/useAuth";
 
-import SectionTitle from '../../../component/SectionTitle';
 
 const Instructor = () => {
+    const {user} = useAuth()
     return (
-        <div>
-            <SectionTitle title='Well Come Instructor'/>
+        <div className="w-full">
+       <h1 className="text-3xl font-semibold text-center text-green-800 underline">Hi, {user.displayName}</h1>
             
         </div>
     );

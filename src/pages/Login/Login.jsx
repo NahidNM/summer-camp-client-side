@@ -35,8 +35,7 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
     }
-    
-    
+     
     return (
         <div>
             <Helmet>

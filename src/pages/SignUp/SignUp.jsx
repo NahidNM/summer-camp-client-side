@@ -67,17 +67,19 @@ const SignUp = () => {
 };
   
     return (
-        <div>
+        <div className="py-20">
             <Helmet>
         <title>Sumner Sports camp | SignUp</title>
       </Helmet>
+      <h1 className="mt-10 text-3xl font-semibold text-center">Please Register</h1>
         <div className="min-h-screen hero bg-base-200">
+        
                 <div className="flex-col hero-content lg:flex-row-reverse">
-                    <div className="text-center lg:text-left">
+                    {/* <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Sign up now!</h1>
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    </div>
-                    <div className="flex-shrink-0 w-full max-w-sm shadow-2xl card bg-base-100">
+                    </div> */}
+                    <div className="flex-shrink-0 w-full s hadow-2xl card bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -115,9 +117,7 @@ const SignUp = () => {
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                 {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
+                               
                             </div>
                             
                             <div className="form-control">
@@ -152,7 +152,7 @@ const SignUp = () => {
                             </div>
                         </form>
                        
-                        <p><small>Already have an account <Link to="/login">Login</Link></small></p>
+                        <p className="pl-5 text-xl"><small>Already have an account <Link to="/login" className="font-semibold text-blue-700 ">Login</Link></small></p>
                         
                       {/* Social Login */}
                       <GoggleLogin></GoggleLogin>

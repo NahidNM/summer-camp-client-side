@@ -20,6 +20,8 @@ import EnroolClass from "../pages/Dashboard/EnrollClass/EnroolClass";
 import PayHistory from "../pages/Dashboard/PayHistory/PayHistory";
 import MyAddClass from "../pages/Dashboard/MyAddClass/MyAddClass";
 import MangeClass from "../pages/Dashboard/MangeClass/MangeClass";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
 
  export const router = createBrowserRouter([
     {
@@ -55,6 +57,11 @@ import MangeClass from "../pages/Dashboard/MangeClass/MangeClass";
       children: [
 
         // User Dashboard
+
+        {
+          path: 'userhome',
+          element: <UserHome></UserHome>
+        },
         {
           path: 'payment/:id',
           element: <Payment></Payment>,
@@ -76,11 +83,15 @@ import MangeClass from "../pages/Dashboard/MangeClass/MangeClass";
         // Admin Dashboard 
         {
           path:'allusers',
-          element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+          element: <AllUsers></AllUsers>
         },
         {
           path: 'manageclass',
           element: <MangeClass></MangeClass>
+        },
+        {
+          path: 'adminhome',
+          element: <AdminHome></AdminHome>
         },
 
         // Insturctor Dashboard

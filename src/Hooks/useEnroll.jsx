@@ -8,7 +8,7 @@ const  {user, loading} = useAuth();
 const [axiosSecure] =useAxiosSecure()
 
     const { refetch, data: enrollClasses = [] } = useQuery({
-        queryKey: ['addClasses', user?.email],
+        queryKey: ['enrollclass', user?.email],
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure('/enrollclass')

@@ -2,35 +2,57 @@ import { Helmet } from "react-helmet-async";
 import useManage from "../../../Hooks/useManage";
 import SectionTitle from "../../../component/SectionTitle";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 const MangeClass = () => {
     
     const [classesmanages] = useManage();
-    console.log("manage",classesmanages);
+    // console.log("manage",classesmanages);
     
-    const handleAprove = data  =>{
-        fetch(`http://localhost:5000/adminapprove/${data._id}`,{
-            method: 'PUT',
-            headers: {
-                'content-type' : 'application/json'
-            },
-            body: JSON.stringify({data})
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.medifiedCount){
-                Swal.fire({
+    // const handleAprove = data  =>{
+    //     fetch(`http://localhost:5000/adminapprove/${data._id}`,{
+    //         method: 'PUT',
+    //         headers: {
+    //             'content-type' : 'application/json'
+    //         },
+    //         body: JSON.stringify({data})
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data);
+    //         if(data.medifiedCount){
+    //             Swal.fire({
+    //                 position: 'top-end',
+    //                 icon: 'success',
+    //                 title: 'Your work has been saved',
+    //                 showConfirmButton: false,
+    //                 timer: 1500
+    //               })
+    //         }
+    //     })
+    // }
+    const [axiosSecure, refetch] = useAxiosSecure()
+    
+    const handleAprove = data => {
+                axiosSecure.put(`/adminapprove/${data._id}`)
+                    .then(res => {
+                        console.log('Approved', res.data);
+                        if (res.data.modifiedCount) {
+                            refetch();
+                             Swal.fire({
                     position: 'top-end',
                     icon: 'success',
                     title: 'Your work has been saved',
                     showConfirmButton: false,
                     timer: 1500
                   })
+                        }
+                    })
+
             }
-        })
-    }
+        
+    
     
     return (
         <div className="w-full">
@@ -50,9 +72,9 @@ const MangeClass = () => {
                     <thead>
                         <tr className="text-xl">
                             <th>#</th>
-                            <th>Class Image</th>
-                            <th>Class Name</th>
-                            <th>Price</th>
+                            <th>Class </th>
+                            <th>Instructor</th> 
+                            <th>Status</th>                          
                             <th>Action</th>                          
                         </tr>
                     </thead>
@@ -65,22 +87,33 @@ const MangeClass = () => {
                                     {index + 1}
                                 </td>
                                 <td>
-                                    <div className="avatar">
-                                        <div className="w-12 h-12 mask mask-squircle">
+                                 
+                                        <div className="avatar">
+                                        <div className="w-20 h-20 mask mask-squircle">
                                             <img src={item.image} alt="Avatar Tailwind CSS Component" />
-                                        </div>
+                                         </div>
+                                        <div className="ml-5">
+                                            <h1 className="font-semibold">Name : {item.name}</h1>
+                                    <p>Price : ${item.price}</p>
+                                        <p> Seats : {item.available_seats}</p>  
+                                    </div>
+                                    </div> 
+                                </td>
+            
+                                <td className="">
+                                    <div className="">
+                                    <h1 className="font-semibold">{item.instructor}</h1>
+                                    <h1>  {item.email}</h1>                                 
                                     </div>
                                 </td>
-                                <td>
-                                    {item.name}
-                                </td>
-                                <td className="">${item.price}</td>
-                                <td className="gap-3">
-                                    <button onClick={()=>handleAprove(item)} className="text-white bg-red-600 btn btn-ghost">Aprove</button>
+                                <td>{item.status}</td>
+                                <td className="gap-2 ">
+                                   
+                                   <button onClick={()=>handleAprove(item)} className="text-white bg-indigo-700 btn btn-ghost">Approve</button>
                                     <button className="mx-3 text-white bg-red-600 btn btn-ghost">Deny</button>
                                     <button className="text-white bg-red-600 btn btn-ghost">
                                         Feedback</button>
-                                    
+                                   
                                 </td>
                                
                             </tr>)

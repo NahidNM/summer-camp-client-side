@@ -151,7 +151,7 @@ console.log(singlecart);
             },
           }}
         />
-        <button className="mt-4 btn btn-outline btn-primary btn-sm" type="submit" >
+        <button className="mt-4 btn btn-outline btn-primary btn-sm" type="submit" disabled={!stripe || !clientSecret || processing}>
           Pay
         </button>
       </form>
