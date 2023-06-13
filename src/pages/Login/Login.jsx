@@ -1,85 +1,120 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import gif from '../../../public/Login/World Bicycle Day.gif'; 
-import { useContext } from "react";
+// import gif from '../../../public/Login/World Bicycle Day.gif'; 
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+
+import bg from '../../../public/bg.jpg'
+import { useForm } from "react-hook-form";
 import GoggleLogin from "../Shared/SocialLogin/GoggleLogin";
 
 const Login = () => {
-    const { signIn, } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [error, setError] = useState()
     
     const from = location.state?.from?.pathname || "/";
     
-    const handleLogin = event => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm();
+    
+    const onSubmit = (data, event) => {
         event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
+        const { email, password } = data;
+        console.log(data)
+    
         signIn(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                Swal.fire({
-                    title: 'User Login Successful.',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                });
-                navigate(from, { replace: true });
+          .then((result) => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Successfully Logged in',
+              showConfirmButton: false,
+              timer: 1500
             })
-    }
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {
+            console.log(error.message);
+            setError(error.message);
+          });
+      };
      
     return (
-       
-           
-            <div className='grid w-48 my-12 md:grid-cols-2'>
-            <div data-aos="fade-right" className='m-5'>
-                <img className='' src={gif} alt="" />
-            </div>
-            
-         <div data-aos="fade-left" className='px-10 pt-5 mx-auto border-2 border-indigo-600 border-solid rounded-lg h-36 bg-slate-400'>
-         <h1 className='mb-5 text-4xl font-semibold text-center '>Please Login</h1>
-         <form onSubmit={handleLogin}  className=" card-body">
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="text-xl font-semibold label-text">Email</span>
-                                </label>
-                                <input type="email" name="email" placeholder="email" className=" input input-bordered" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="text-xl font-semibold label-text">Password</span>
-                                </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" />
-                                <label className="label">
-                                    <Link href="#" className="text-sm label-text-alt link link-hover">Forgot password?</Link>
-                                </label>
-                            </div>
-                            
-                        
-                            <div className="form-control">
-                                <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
-                            </div>
-                        </form>
-            <div>
-                <h1 className='text-xl'>Don't Have an Account ?<Link to='/signup' state={location.state}> <span className='text-blue-700'>SignUp</span></Link></h1>
-            
-                </div>
-                <div>
-                    <h1 className='mb-4 text-2xl font-semibold text-center mt-7'>Login With</h1>
-                    <GoggleLogin></GoggleLogin>
-                    
-         </div>
-            </div>
-       
-        </div>
+        
+        
+        <div
+      style={{ backgroundImage: `url(${bg})` }}
+      className="bg-no-repeat bg-cover pd-16 md:px-20"
+    >
+       <Helmet>
+        <title>Sumner Sports camp | Login</title>
+      </Helmet>
+        <div className="relative py-20 md:mx-60 md:left-44">
+        <div>
+      <div className="flex flex-col gap-2 px-10 py-5 bg-blue-500 w-96 rounded-xl">
+        <h1 className="text-3xl text-center text-white ">Login Here!!</h1>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
+          <label htmlFor="mail" className="text-xl text-white">
+            Enter Email id
+          </label>
+          <input
+            type="email"
+            id="mail"
+            placeholder="Enter mail here"
+            className="w-full max-w-xs input input-bordered"
+            {...register("email", { required: true })}
+          />
+          {errors.email && <span>This field is required</span>}
+          <label htmlFor="pass" className="text-xl text-white">
+            Enter password
+          </label>
+          <input
+            type="password"
+            id="pass"
+            placeholder="Enter your password"
+            className="w-full max-w-xs input input-bordered "
+            {...register("password", { required: true })}
+          />
+          {errors.password && <span>This field is required</span>}
+          <input
+            type="submit"
+            value="Login"
+            className="w-full max-w-xs my-5 bg-red-700 input input-bordered btn"
+          />{" "}
+        </form>
+        <p className="text-xl text-white">{error}</p>
+        {/* <div className="flex flex-col w-full border-opacity-100">
+          <div className="text-white divider ">OR</div>
+        </div> */}
+        
+        {/* <button
+          onClick={handleGoogleSignIn}
+          className="flex items-center gap-2 px-16 py-2 text-xl 0 rounded-xl"
+        >
+          Continue with <FcGoogle size={25} />
+        </button> */}
+        
+        <GoggleLogin></GoggleLogin>
+        <p className="text-white">
+          Not Registered yet ?
+          <Link to={"/signup"} className="text-blue-300 underline">
+            {" "}
+            Signup
+          </Link>{" "}
+          now.
+        </p>
+      </div>
+    </div>
+        </div>    
+    </div>
         
     );
 };

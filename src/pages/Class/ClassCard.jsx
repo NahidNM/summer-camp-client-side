@@ -20,7 +20,7 @@ const ClassCard = (props) => {
         console.log(item);
         if(user && user.email){
             const addClass = {classAddId: _id, name, image, instructor, price, available_seats, email: user.email}
-            fetch(' https://summer-sports-camp-server.vercel.app/addClasses',{
+            fetch(' http://localhost:5000/addClasses',{
                 method:'POST',
                 headers: {
                     'content-type': 'application/json'

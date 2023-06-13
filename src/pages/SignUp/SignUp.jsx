@@ -31,7 +31,7 @@ const SignUp = () => {
                 
                 const saveUser = {name: data.name, email: data.email}
                 
-                fetch(' https://summer-sports-camp-server.vercel.app/users',{
+                fetch(' http://localhost:5000/users',{
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json' 
@@ -67,20 +67,17 @@ const SignUp = () => {
 };
   
     return (
-        <div className="py-20">
-            <Helmet>
+      
+           
+      
+        <div className="min-h-screen py-20 hero">
+        <Helmet>
         <title>Sumner Sports camp | SignUp</title>
       </Helmet>
-      <h1 className="mt-10 text-3xl font-semibold text-center">Please Register</h1>
-        <div className="min-h-screen hero bg-base-200">
-        
                 <div className="flex-col hero-content lg:flex-row-reverse">
-                    {/* <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Sign up now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    </div> */}
-                    <div className="flex-shrink-0 w-full s hadow-2xl card bg-base-100">
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                    <div className="flex-shrink-0 w-full s hadow-2xl card bg-slate-500">
+                    <h1 className="mt-10 text-3xl font-semibold text-center">Please Register</h1>
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="text-xl font-semibold label-text">Name</span>
@@ -160,7 +157,7 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>  
-        </div>
+      
     );
 };
 

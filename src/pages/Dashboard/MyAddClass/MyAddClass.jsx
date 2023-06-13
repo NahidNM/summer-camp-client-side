@@ -36,7 +36,7 @@ const myAddClasses = addClasses?.filter(myAddClass => myAddClass.email === user.
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            fetch(` https://summer-sports-camp-server.vercel.app/myaddclassdelete/${item._id}`, {
+            fetch(` http://localhost:5000/myaddclassdelete/${item._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

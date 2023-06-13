@@ -94,7 +94,7 @@ console.log(singlecart);
               }
               
               
-              fetch(` https://summer-sports-camp-server.vercel.app/classupdatedata/${singlecart.classAddId}`)
+              fetch(` http://localhost:5000/classupdatedata/${singlecart.classAddId}`)
           .then(res => res.json())
           .then(data => {
             const newseat = data.available_seats-1;
@@ -102,7 +102,7 @@ console.log(singlecart);
             
             const newUpdateClass ={newseat, newEnroll};
             
-            fetch(` https://summer-sports-camp-server.vercel.app/classupdatedata/${singlecart.classAddId}`,{
+            fetch(` http://localhost:5000/classupdatedata/${singlecart.classAddId}`,{
               method: 'PUT',
               headers: {
                 'content-type': 'application/json'
