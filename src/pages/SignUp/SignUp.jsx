@@ -17,7 +17,7 @@ const SignUp = () => {
 
 //   const from = location.state?.from?.pathname || "/login";
   
-  const onSubmit = data => {
+  const onSubmit =( data ) => {
 
     createUser(data.email, data.password)
         .then(result => {
@@ -31,7 +31,7 @@ const SignUp = () => {
                 
                 const saveUser = {name: data.name, email: data.email}
                 
-                fetch('http://localhost:5000/users',{
+                fetch(' https://summer-sports-camp-server.vercel.app/users',{
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json' 

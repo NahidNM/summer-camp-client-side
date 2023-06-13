@@ -10,7 +10,7 @@ const PopularClass = () => {
             <div className="text-3xl font-semibold text-center divider">Our Popular Class</div>
             <div className="divider"></div>
             
-            <div className="grid md:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-3">
                 {/* {
                     classes?.map?.slice(0, 6)((popularClass) => <ClassCard key={popularClass._id}
                     class={popularClass}

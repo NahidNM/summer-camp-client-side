@@ -10,9 +10,10 @@ const auth = getAuth(app);
 const AuthProvider = ({children}) => {
 
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
     const [reload, setReload] =useState(0);
+    const [darkmod, setDarkmod] = useState(false)
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -51,7 +52,7 @@ const AuthProvider = ({children}) => {
             
             // get and set token
             if(currentUser){
-                axios.post('http://localhost:5000/jwt', {email: currentUser.email})
+                axios.post(' https://summer-sports-camp-server.vercel.app/jwt', {email: currentUser.email})
                 .then(data =>{
                    
                     // console.log(data.data.token)
@@ -63,9 +64,9 @@ const AuthProvider = ({children}) => {
             else{
                 localStorage.removeItem('access-token')
                 // setUser(null);
-                // setLoading(false)
+                setLoading(false)
             }
-
+            // setLoading(false)
             
         });
         return () => {
@@ -81,12 +82,15 @@ const AuthProvider = ({children}) => {
         googleSignIn,
         logOut,
         updateUserProfile,
-        setReload
+        setReload,
+        darkmod, setDarkmod
     }
 
     return (
         <AuthContext.Provider value={authInfo}>
-            {children}
+           <div className={darkmod? 'bg-gray-900 text-white': ''}>
+           {children}
+           </div>
         </AuthContext.Provider>
     );
 };

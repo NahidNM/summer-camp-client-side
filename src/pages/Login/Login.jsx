@@ -37,18 +37,16 @@ const Login = () => {
     }
      
     return (
-        <div>
-            <Helmet>
-        <title>Sumner Sports camp | Login</title>
-      </Helmet>
-            <div className='grid w-full pt-20 mb-10 md:grid-cols-2'>
+       
+           
+            <div className='grid w-48 my-12 md:grid-cols-2'>
             <div data-aos="fade-right" className='m-5'>
                 <img className='' src={gif} alt="" />
             </div>
             
-         <div data-aos="fade-left" className='h-full px-10 pt-5 mx-auto border-2 border-indigo-600 border-solid rounded-lg bg-slate-400'>
-         <h1 className='mb-5 text-4xl font-semibold text-center'>Please Login</h1>
-            <form onSubmit={handleLogin}  className="card-body">
+         <div data-aos="fade-left" className='px-10 pt-5 mx-auto border-2 border-indigo-600 border-solid rounded-lg h-36 bg-slate-400'>
+         <h1 className='mb-5 text-4xl font-semibold text-center '>Please Login</h1>
+         <form onSubmit={handleLogin}  className=" card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="text-xl font-semibold label-text">Email</span>
@@ -66,7 +64,7 @@ const Login = () => {
                             </div>
                             
                         
-                            <div className="mt-6 form-control">
+                            <div className="form-control">
                                 <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
                             </div>
                         </form>
@@ -82,7 +80,7 @@ const Login = () => {
             </div>
        
         </div>
-        </div>
+        
     );
 };
 

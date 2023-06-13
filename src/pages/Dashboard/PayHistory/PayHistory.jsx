@@ -9,8 +9,8 @@ const PayHistory = () => {
     
     const [enrollClasses] = useEnroll()
     
-    const enrollClasse = enrollClasses.filter(enrollClass => enrollClass.email===user.email)
-    console.log(enrollClasses)
+    const enrollClass = enrollClasses.filter(enrollClass => enrollClass.email===user.email)
+    // console.log(enrollClass)
     return (
         <div className="w-full">
             <Helmet>
@@ -18,7 +18,7 @@ const PayHistory = () => {
             </Helmet>
             <SectionTitle title="All Enroll Class"></SectionTitle>
             <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center bg-orange-100 rounded-lg ">
-                <h3 className="text-3xl">Total : {enrollClasses.length}</h3> 
+                <h3 className="text-3xl">Total : {enrollClass.length}</h3> 
             </div>   
             <div className="w-full overflow-x-auto bg-orange-300 rounded-lg">
                 <table className="table w-full">
@@ -36,7 +36,7 @@ const PayHistory = () => {
                     </thead>
                     <tbody className="">
                         {
-                            enrollClasse.map((item, index) => <tr
+                            enrollClass.map((item, index) => <tr
                                 key={item._id}
                             >
                                 <td className="">

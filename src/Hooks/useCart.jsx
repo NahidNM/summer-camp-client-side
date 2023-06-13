@@ -19,7 +19,7 @@ const useCart = () => {
         },
 
     //     queryFn: async () => {
-    //         const res = await fetch(`http://localhost:5000/addClasses?email=${user?.email}`, {
+    //         const res = await fetch(` https://summer-sports-camp-server.vercel.app/addClasses?email=${user?.email}`, {
     //             headers: {
             
     //   authorization: `bearer ${token}`

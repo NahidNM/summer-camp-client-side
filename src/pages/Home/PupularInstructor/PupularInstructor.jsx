@@ -11,7 +11,7 @@ const PupularInstructor = () => {
             <div className="divider"></div>
             <div className="text-3xl font-semibold text-center divider">Our Pupular Instructor </div>
             <div className="divider"></div>
-            <div className="grid md:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-3">
                {/* {
                 instructors.filter(instructor => instructor.status == _id).map.slice(0, 6)((popularInstructor) =>
                 <InstructorCart
@@ -20,7 +20,7 @@ const PupularInstructor = () => {
                 </InstructorCart>)
                } */}
                 {
-                    instructors?.map((popularInstructor) => 
+                    instructors?.slice(0, 6). map((popularInstructor) => 
                     <InstructorCart
                     key={popularInstructor._id}
                     instructor={popularInstructor}>

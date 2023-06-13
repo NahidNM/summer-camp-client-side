@@ -22,6 +22,7 @@ import MyAddClass from "../pages/Dashboard/MyAddClass/MyAddClass";
 import MangeClass from "../pages/Dashboard/MangeClass/MangeClass";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import InstructorRoute from "./InstructorRoute";
 
  export const router = createBrowserRouter([
     {
@@ -65,7 +66,7 @@ import UserHome from "../pages/Dashboard/UserHome/UserHome";
         {
           path: 'payment/:id',
           element: <Payment></Payment>,
-          loader: (({params})=> fetch(`http://localhost:5000/addClasses/${params.id}`))
+          loader: (({params})=> fetch(` https://summer-sports-camp-server.vercel.app/addClasses/${params.id}`))
         },
         {
           path: 'myclass',
@@ -83,29 +84,29 @@ import UserHome from "../pages/Dashboard/UserHome/UserHome";
         // Admin Dashboard 
         {
           path:'allusers',
-          element: <AllUsers></AllUsers>
+          element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
         },
         {
           path: 'manageclass',
-          element: <MangeClass></MangeClass>
+          element: <AdminRoute><MangeClass></MangeClass></AdminRoute>
         },
         {
           path: 'adminhome',
-          element: <AdminHome></AdminHome>
+          element: <AdminHome><AdminHome></AdminHome></AdminHome>
         },
 
         // Insturctor Dashboard
         {
           path:'instructorhome',
-          element: <Instructor/>
+          element: <InstructorRoute><Instructor/></InstructorRoute>
         },
         {
           path: 'addClass',
-          element: <AddItem></AddItem>
+          element: <InstructorRoute><AddItem></AddItem></InstructorRoute>
         },
         {
           path: 'myaddclass',
-          element: <MyAddClass></MyAddClass>
+          element: <InstructorRoute><MyAddClass></MyAddClass></InstructorRoute>
         }
       ]
       

@@ -13,7 +13,7 @@ const EnroolClass = () => {
     
     const [enrollClasses, refetch] = useEnroll()
     // console.log(enrollClasses)
-    
+   const enrollClass = enrollClasses?.filter(enrollClass => enrollClass.email === user.email)
     
     const handleEnrollDelete = item => {
         Swal.fire({
@@ -26,7 +26,7 @@ const EnroolClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/payment/${item._id}`, {
+                fetch(` https://summer-sports-camp-server.vercel.app/payment/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -52,7 +52,7 @@ const EnroolClass = () => {
             <SectionTitle title="All Enroll Class"></SectionTitle>
         
             <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center bg-orange-100 rounded-lg ">
-                <h3 className="text-3xl">Total Enroll: {enrollClasses.length}</h3> 
+                <h3 className="text-3xl">Total Enroll: {enrollClass.length}</h3> 
             </div>
             <div className="w-full overflow-x-auto bg-orange-300 rounded-lg">
                 <table className="table w-full">
@@ -68,7 +68,7 @@ const EnroolClass = () => {
                     </thead>
                     <tbody className="">
                         {
-                            enrollClasses?.filter(enrollClass => enrollClass.email === user.email)?.map((item, index) => <tr
+                           enrollClass?.map((item, index) => <tr
                                 key={item._id}
                             >
                                 <td className="">

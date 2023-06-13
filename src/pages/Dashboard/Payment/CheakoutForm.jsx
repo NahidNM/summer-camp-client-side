@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-
+import './CheakoutForm.css'
 
 const CheakoutForm = ({price, singlecart}) => {
 console.log(singlecart);
@@ -94,15 +94,15 @@ console.log(singlecart);
               }
               
               
-              fetch(`http://localhost:5000/classupdatedata/${singlecart.classAddId}`)
+              fetch(` https://summer-sports-camp-server.vercel.app/classupdatedata/${singlecart.classAddId}`)
           .then(res => res.json())
           .then(data => {
             const newseat = data.available_seats-1;
-            // const newEnroll = data.enroll+1;
+            const newEnroll = data.enroll+1;
             
-            const newUpdateClass ={newseat};
+            const newUpdateClass ={newseat, newEnroll};
             
-            fetch(`http://localhost:5000/classupdatedata/${singlecart.classAddId}`,{
+            fetch(` https://summer-sports-camp-server.vercel.app/classupdatedata/${singlecart.classAddId}`,{
               method: 'PUT',
               headers: {
                 'content-type': 'application/json'

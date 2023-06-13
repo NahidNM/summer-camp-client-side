@@ -6,7 +6,7 @@ const InstructorCart = (props) => {
     } = props.instructor;
     
     return (
-        <div className="my-5 shadow-xl card md:w-96 bg-sky-200">           
+        <div className="my-5 text-black shadow-xl card md:w-80 bg-sky-200">           
         <figure><img className="pt-5 rounded-tr-3xl rounded-bl-3xl w-72 h-72" src={image} alt="Shoes" /></figure>
         
         <div className="flex flex-col items-center card-body">
