@@ -52,7 +52,7 @@ const Login = () => {
         
         <div
       style={{ backgroundImage: `url(${bg})` }}
-      className="bg-no-repeat bg-cover pd-16 md:px-20"
+      className="bg-no-repeat bg-cover pd-16 md:p-20"
     >
        <Helmet>
         <title>Sumner Sports camp | Login</title>
@@ -91,17 +91,6 @@ const Login = () => {
           />{" "}
         </form>
         <p className="text-xl text-white">{error}</p>
-        {/* <div className="flex flex-col w-full border-opacity-100">
-          <div className="text-white divider ">OR</div>
-        </div> */}
-        
-        {/* <button
-          onClick={handleGoogleSignIn}
-          className="flex items-center gap-2 px-16 py-2 text-xl 0 rounded-xl"
-        >
-          Continue with <FcGoogle size={25} />
-        </button> */}
-        
         <GoggleLogin></GoggleLogin>
         <p className="text-white">
           Not Registered yet ?

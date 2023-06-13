@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import GoggleLogin from "../Shared/SocialLogin/GoggleLogin";
 import { useState } from "react";
-
+import bg from '../../../public/bg.jpg'
 
 const SignUp = () => {
   const { register, handleSubmit, reset, formState: { errors },  watch, } = useForm();
@@ -55,8 +55,6 @@ const SignUp = () => {
                           navigate('/');
                     }
                 })
-                
-              
                 // navigate(from, { replace: true });
               });
         })
@@ -67,14 +65,12 @@ const SignUp = () => {
 };
   
     return (
-      
-           
-      
-        <div className="min-h-screen py-20 hero">
+        <div  style={{ backgroundImage: `url(${bg})` }}
+        className="bg-no-repeat bg-cover md:p-20 hero">
         <Helmet>
         <title>Sumner Sports camp | SignUp</title>
       </Helmet>
-                <div className="flex-col hero-content lg:flex-row-reverse">
+                <div className="flex-col md:pt-10 hero-content lg:flex-row-reverse w-96">
                     <div className="flex-shrink-0 w-full s hadow-2xl card bg-slate-500">
                     <h1 className="mt-10 text-3xl font-semibold text-center">Please Register</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
@@ -144,7 +140,7 @@ const SignUp = () => {
                             {error && <span>{error}</span> }
                              </p>
                             
-                            <div className="mt-6 form-control">
+                            <div className=" form-control">
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>
                         </form>

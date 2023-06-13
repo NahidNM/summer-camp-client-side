@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import './CheakoutForm.css'
+// import './CheakoutForm.css'
 
 const CheakoutForm = ({price, singlecart}) => {
 console.log(singlecart);
