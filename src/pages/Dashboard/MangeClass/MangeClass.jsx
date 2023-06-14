@@ -11,7 +11,7 @@ const MangeClass = () => {
     // console.log("manage",classesmanages);
     
     // const handleAprove = data  =>{
-    //     fetch(` http://localhost:5000/adminapprove/${data._id}`,{
+    //     fetch(` https://summer-sports-camp-server.vercel.app/adminapprove/${data._id}`,{
     //         method: 'PUT',
     //         headers: {
     //             'content-type' : 'application/json'

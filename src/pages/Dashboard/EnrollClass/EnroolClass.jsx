@@ -26,7 +26,7 @@ const EnroolClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(` http://localhost:5000/payment/${item._id}`, {
+                fetch(` https://summer-sports-camp-server.vercel.app/payment/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

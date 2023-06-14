@@ -66,7 +66,7 @@ import InstructorRoute from "./InstructorRoute";
         {
           path: 'payment/:id',
           element: <Payment></Payment>,
-          loader: (({params})=> fetch(` http://localhost:5000/addClasses/${params.id}`))
+          loader: (({params})=> fetch(` https://summer-sports-camp-server.vercel.app/addClasses/${params.id}`))
         },
         {
           path: 'myclass',
