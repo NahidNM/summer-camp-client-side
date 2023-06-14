@@ -17,11 +17,11 @@ user login then enroll like the class.
 
 ## Used Packages
 1. Vite React
-2. tailwind css
+2. tailwind css    
 3. daisy ui
 4. raact icon
-5. awesome react slider
-6. firebase
+5. awesome react      b     
+6.          
 7. mongodb
 8. node js
 9. vercel
@@ -31,11 +31,4 @@ user login then enroll like the class.
 ## Documentation
 
 [Live Link](https://summer-sports-camp-6957a.web.app)
-
-
-
-
-## Documentation
-
-Live Link : https://summer-sports-camp-6957a.web.app
 
