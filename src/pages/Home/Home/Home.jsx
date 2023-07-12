@@ -38,6 +38,7 @@ const Home = () => {
       <PopularClass></PopularClass>
       <PupularInstructor></PupularInstructor>
       <Additon></Additon>
+      <Contract></Contract>
     </div>
   );
 };
