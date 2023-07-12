@@ -7,7 +7,7 @@ const PopularClass = () => {
     return (
         <div>
             <div className="divider"></div>
-            <div className="text-3xl font-semibold text-center divider">Our Popular Class</div>
+            <div className="text-3xl font-semibold text-center divider">Our Popular Classes</div>
             <div className="divider"></div>
             
             <div className="grid gap-5 md:grid-cols-3">

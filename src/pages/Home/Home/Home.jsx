@@ -7,6 +7,8 @@ import Additon from "../Addition/Additon";
 // import { motion, spring } from "framer-motion";
 import "./Home.css";
 import useAuth from "../../../Hooks/useAuth";
+import Section2 from "../Addition/Section2";
+import Section from "../Addition/Section";
 
 const Home = () => {
   const { darkmod, setDarkmod } = useAuth();
@@ -38,7 +40,8 @@ const Home = () => {
       <PopularClass></PopularClass>
       <PupularInstructor></PupularInstructor>
       <Additon></Additon>
-      <Contract></Contract>
+      <Section></Section>
+      <Section2></Section2>
     </div>
   );
 };
