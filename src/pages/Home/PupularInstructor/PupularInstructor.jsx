@@ -6,7 +6,7 @@ const PupularInstructor = () => {
     const [instructors] = useInstructor();
     
     return (
-        <div>
+        <div data-aos="fade-up" data-aos-delay="500">
            
             <div className="divider"></div>
             <div className="text-3xl font-semibold text-center divider">Our Pupular Instructor </div>

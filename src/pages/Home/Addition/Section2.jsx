@@ -32,7 +32,7 @@ const Section2 = () => {
       console.log(import.meta.env.VITE_PUBLIC_KEY);
     
     return (
-        <div className='my-10'>
+        <div className='my-10' data-aos="fade-down">
           <div className="divider"></div>
             <div className="text-3xl font-semibold text-center divider">Send Massage</div>
             <div className="divider"></div>
@@ -42,7 +42,7 @@ const Section2 = () => {
                     <h1 data-aos="fade-up" data-aos-delay="500" className='text-5xl font-bold text-transparent mb-9 bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600'>Contract With Me</h1>
                     <img data-aos="zoom-in" data-aos-delay="800" className='w-72 h-72 lg:w-96 lg:h-96' src={contract} alt="" />
                 </div>
-                <div data-aos="fade-down" data-aos-delay="1000"    className='ml-5 w-80 mb-80 card md:ml-0 md:mb-0 lg:w-96 h-[60%] md:h-full shadow-2xl bg-gradient-to-r from-pink-900 via-indigo-800 to-purple-800'>
+                <div data-aos="fade-down" data-aos-delay="500"    className='ml-5 w-80 mb-10 card md:ml-0 md:mb-0 lg:w-96 h-[90%] md:h-full shadow-2xl bg-gradient-to-r from-pink-900 via-indigo-800 to-purple-800'>
    <form ref={form} onSubmit={sendEmail}>
         <div className='card-body'>
             <div className='form-control'>

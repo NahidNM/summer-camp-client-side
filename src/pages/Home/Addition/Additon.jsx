@@ -6,8 +6,8 @@ const Additon = () => {
   return (
     <div className="pt-5 ">
       <h1 className="text-center md:text-3xl ">Best Sports Players</h1>
-      <div className="grid gap-5 space-y-2 md:grid-cols-3 md:p-10">
-        <div className="text-black shadow-xl w-80 card bg-base-100">
+      <div className="grid grid-cols-1 gap-5 space-y-2 md:grid-cols-3 md:p-10">
+        <div className="text-black shadow-xl md:w-72 card bg-base-100" data-aos="fade-left ">
           <figure className="px-10 pt-10">
             <img
               src={img1}
@@ -25,7 +25,7 @@ const Additon = () => {
             </p>
           </div>
         </div>
-        <div className="text-black shadow-xl card w-80 bg-base-100">
+        <div className="text-black shadow-xl card md:w-72 bg-base-100" data-aos="fade-down">
           <figure className="px-10 pt-10">
             <img
               src={img2}
@@ -44,7 +44,7 @@ const Additon = () => {
             </p>
           </div>
         </div>
-        <div className="text-black shadow-xl card w-80 bg-base-100">
+        <div className="text-black shadow-xl card md:w-72 bg-base-100" data-aos="fade-right">
           <figure className="px-10 pt-10">
             <img src={img3} alt="Lin Dan" className="rounded-full w-52 h-52" />
           </figure>

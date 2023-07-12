@@ -8,7 +8,9 @@ import Additon from "../Addition/Additon";
 import "./Home.css";
 import useAuth from "../../../Hooks/useAuth";
 import Section2 from "../Addition/Section2";
-import Section from "../Addition/Section";
+import Facilitys from "../Addition/Facilitys";
+import Sponser from "../Addition/Sponser";
+import Upcoming from "../Addition/Upcoming";
 
 const Home = () => {
   const { darkmod, setDarkmod } = useAuth();
@@ -34,14 +36,15 @@ const Home = () => {
       >
         <motion.div className="handle" layout transition={spring} />
       </div> */}
-      
-      
+            
       <Banner></Banner>
+      <Facilitys></Facilitys>
       <PopularClass></PopularClass>
       <PupularInstructor></PupularInstructor>
       <Additon></Additon>
-      <Section></Section>
-      <Section2></Section2>
+      <Sponser></Sponser>
+      <Upcoming></Upcoming>
+      <Section2></Section2>      
     </div>
   );
 };

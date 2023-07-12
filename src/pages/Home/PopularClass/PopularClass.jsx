@@ -5,7 +5,7 @@ const PopularClass = () => {
     const [classes] = useClass();
     // console.log(classes);
     return (
-        <div>
+        <div data-aos="fade-up" data-aos-delay="500">
             <div className="divider"></div>
             <div className="text-3xl font-semibold text-center divider">Our Popular Classes</div>
             <div className="divider"></div>
